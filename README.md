@@ -40,4 +40,12 @@ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 Note: This step needs to be automated.  
 
+6. Symlink your dotfiles to appropriate locations on your machine using GNU Stow, 
 
+```bash
+./init.sh # Uses GNU Stow under the hood.
+```
+
+I understand that 'nix home manager' can handle this more gracefully, but for now I am satisfied with Stow.
+
+7. Update you git configuration (this step needs to be automated, I am performing this step manually for now because I don't want my email, etc. to leak).
