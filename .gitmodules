@@ -1,3 +1,6 @@
 [submodule "nvim/.config/nvim"]
 	path = nvim/.config/nvim
 	url = https://github.com/shibisuriya/nvim
+[submodule "zsh/scripts/yt-snip"]
+	path = zsh/scripts/yt-snip
+	url = https://github.com/shibisuriya/yt-snip
