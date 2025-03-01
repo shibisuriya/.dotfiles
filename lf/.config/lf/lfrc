@@ -1,0 +1,82 @@
+set shell zsh
+set hiddenfiles true
+set ignorecase true
+
+cmd new-file ${{
+
+	echo -n "Enter the file or folder path: "
+	read input
+
+	# Check if input starts with '/'
+	if [[ ${input:0:1} == "/" ]]; then
+	    echo "Input should not start with '/'"
+	    exit 1
+	fi
+
+	# Extract folder path and file name
+	folder=$(dirname "$input")
+	filename=$(basename "$input")
+
+	# Check if the last character of the input is '/'
+	last_char=${input: -1}
+	if [[ "$last_char" == "/" ]]; then
+	    mkdir -p "$input"
+	else
+	    mkdir -p "$folder"
+	    if [[ ! -z "$filename" ]]; then
+		touch "$folder/$filename"
+	    else
+		mkdir -p "$folder/$filename"
+	    fi
+	fi
+
+	echo "File(s) and folder(s) created successfully."
+}}
+
+
+map a new-file
+
+cmd delete ${{
+    echo "\n"
+    printf "Delete '$f'? Type 'Yes' to confirm: "
+    read answer
+    if [ "$answer" = "Yes" ]; then
+        rm -rf "$f"
+    else
+        echo "Deletion cancelled."
+    fi
+}}
+
+cmd paste-image ${{
+
+	generate_filename() {
+	    echo "$(date +"%Y-%m-%d_%H-%M-%S").png"
+	}
+	echo "\n"
+
+	read -p "Enter image file name: " input
+
+	# Check if input is empty
+	if [ -z "$input" ]; then
+	    filename=$(generate_filename)
+	else
+	    filename="$input"
+	fi
+
+	pngpaste "$filename"
+
+	echo "Image file '$filename' created from clipboard content."
+
+}}
+
+## cmd open-cwd-with-neovim ${{
+##	nvim .
+## }}
+
+# map n open-cwd-with-neovim
+
+map d delete
+map x cut
+
+map i paste-image
+
