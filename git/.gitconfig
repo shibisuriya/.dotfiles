@@ -1,0 +1,9 @@
+[user]
+	email = xxxx@xxxx.xxxx
+	name = xxxx
+
+[core]
+    excludesfile = ~/.gitignore_global
+
+[http]
+	postBuffer = 524288000
