@@ -1,0 +1,14 @@
+version: "3.8"
+
+services:
+  dotfiles:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: dotfiles
+    ports:
+      - "1234:22"
+    volumes:
+      - .:/root/.dotfiles
+    environment:
+      - DEBIAN_FRONTEND=noninteractive # Set the non-interactive mode for apt
