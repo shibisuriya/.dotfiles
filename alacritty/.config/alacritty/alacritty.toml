@@ -1,0 +1,35 @@
+[window]
+opacity = 1
+
+[font]
+size = 14.0
+
+[font.normal]
+family = "JetBrainsMono Nerd font"
+style = "Thin"
+
+[font.bold]
+family = "JetBrainsMono Nerd font"
+style = "Bold"
+
+[font.italic]
+family = "JetBrainsMono Nerd font"
+style = "Italic"
+
+[font.bold_italic]
+family = "JetBrainsMono Nerd font"
+style = "BoldItalic"
+
+[font.offset]
+x = 1
+y = 6
+
+
+[cursor.style]
+shape = "Beam"
+blinking = "Always"
+
+[cursor]
+blink_interval = 500
+blink_timeout = 0
+thickness = 1
