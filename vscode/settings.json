@@ -1,0 +1,147 @@
+{
+  "vim.leader": "<space>",
+  "vim.normalModeKeyBindings": [
+    {
+      "before": [
+        "g",
+        "r"
+      ],
+      "commands": [
+        "references-view.findReferences"
+      ]
+    },
+    {
+      "before": [
+        "<leader>",
+        "c",
+        "p"
+      ],
+      "commands": [
+        "copyRelativeFilePath"
+      ],
+      "when": "editorFocus"
+    }
+  ],
+  "vim.visualModeKeyBindings": [
+    {
+      "before": [
+        "<leader>",
+        "h",
+        "s"
+      ],
+      "commands": [
+        "git.stageSelectedRanges"
+      ],
+      "when": "isInDiffEditor && !operationInProgress"
+    },
+    {
+      "before": [
+        "<leader>",
+        "h",
+        "r"
+      ],
+      "commands": [
+        "git.revertSelectedRanges"
+      ],
+      "when": "isInDiffEditor && !operationInProgress"
+    }
+  ],
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "git.autofetch": true,
+  "[vue]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "git.confirmSync": false,
+  "editor.formatOnPaste": true,
+  "editor.formatOnType": true,
+  "[typescript]": {
+    "editor.defaultFormatter": "vscode.typescript-language-features"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  "blockman.n01LineHeight": 0,
+  "workbench.colorCustomizations": {
+    "editor.lineHighlightBackground": "#1073cf2d",
+    "editor.lineHighlightBorder": "#9fced11f"
+  },
+  "editor.wordWrap": "off",
+  "editor.inlayHints.enabled": false,
+  "explorer.confirmDelete": false,
+  "workbench.tree.indent": 23,
+  "vetur.format.options.tabSize": 7,
+  "vetur.format.options.useTabs": true,
+  "bracket-pair-colorizer-2.depreciation-notice": false,
+  "editor.guides.bracketPairsHorizontal": false,
+  "guides.active.width": 4,
+  "redhat.telemetry.enabled": true,
+  "npm.keybindingsChangedWarningShown": true,
+  "[css]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[markdown]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "vim.useSystemClipboard": true,
+  "terminal.explorerKind": "external",
+  "terminal.external.osxExec": "alacritty",
+  "[yaml]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[python]": {
+    "editor.defaultFormatter": "ms-python.autopep8"
+  },
+  "[mdx]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "editor.indentSize": "tabSize",
+  "editor.guides.indentation": false,
+  "editor.minimap.enabled": false,
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/bower_components": true,
+    "**/*.code-search": true,
+    "**/temp-notes": false
+  },
+  "explorer.compactFolders": false,
+  "eslint.provideLintTask": true,
+  "eslint.run": "onSave",
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact"
+  ],
+  "files.watcherExclude": {
+    "**/node_modules/**": true
+  },
+  "eslint.options": {
+    "extensions": [
+      ".js",
+      ".jsx",
+      ".ts",
+      ".tsx"
+    ]
+  },
+  "editor.bracketPairColorization.enabled": false,
+  "diffEditor.ignoreTrimWhitespace": false,
+  "scm.showHistoryGraph": false,
+  "gitlens.home.preview.enabled": false,
+  "scm.graph.pageOnScroll": false,
+  "workbench.tree.renderIndentGuides": "none",
+  "workbench.sideBar.location": "right"
+}
