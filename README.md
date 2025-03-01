@@ -31,3 +31,13 @@ Ones nix-darwin is installed, we will have access to the `darwin-rebuild` comman
 ```bash
 darwin-rebuild switch --flake ~/.dotfiles/nix-darwin#care_taker_1
 ```
+
+5. Install TPM,
+
+```bash
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+```
+
+Note: This step needs to be automated.  
+
+
