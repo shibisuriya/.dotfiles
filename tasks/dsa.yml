@@ -1,0 +1,45 @@
+- name: Install GDB
+  apt: name=gdb
+  tags:
+    - dsa
+
+# clangd is not supported by neovim in arm based platforms.
+# This is a temporary hack to get clangd to work with neovim.
+
+- name: Install clangd LSP (for neovim)
+  apt: name=clangd
+  tags:
+    - dsa
+
+- name:
+    Ensure `~/.local/share/nvim/mason/bin` directory exists
+  ansible.builtin.file:
+    path: ~/.local/share/nvim/mason/bin
+    state: directory
+    mode: "0755"
+  tags:
+    - dsa
+
+- name: Symlink clangd into Neovim's cache
+  ansible.builtin.file:
+    src: /usr/bin/clangd
+    dest: ~/.local/share/nvim/mason/bin/clangd
+    state: link
+  tags:
+    - dsa
+
+- name:
+    Create 'clangd' directory in Neovim's cache (don't know
+    why this needs to be done)
+  ansible.builtin.file:
+    path: ~/.local/share/nvim/mason/packages/clangd
+    state: directory
+    mode: "0755"
+  tags:
+    - dsa
+
+- name: Install gdbgui
+  ansible.builtin.pip:
+    name: gdbgui
+  tags:
+    - dsa

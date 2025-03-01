@@ -1,0 +1,35 @@
+- name: Install `build-essential`
+  apt: name=build-essential
+  tags:
+    - always
+
+- name: Install curl
+  apt: name=curl
+  tags:
+    - always
+
+- name: Install git
+  apt: name=git
+  tags:
+    - always
+
+- name: Install xclip
+  apt: name=xclip
+  tags:
+    - always
+
+- name: Install net-tools
+  apt: name=net-tools
+  tags:
+    - always
+
+- name: Install iputils-ping
+  apt: name=iputils-ping
+  tags:
+    - always
+
+- name: Install fd
+  apt: name=fdclone
+  tags:
+    - always
+

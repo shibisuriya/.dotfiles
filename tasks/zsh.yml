@@ -1,0 +1,31 @@
+- name: Install zsh
+  apt: name=zsh
+  tags:
+    - always
+
+- name: Change shell
+  shell: chsh -s `which zsh`
+  tags:
+    - always
+
+- name: Git clone zsh-syntax-highlighting
+  ansible.builtin.git:
+    repo: "https://github.com/zsh-users/zsh-syntax-highlighting.git"
+    dest: "/usr/share/zsh-syntax-highlighting/"
+  tags:
+    - always
+
+
+
+- name: Git clone zsh-autosuggestions
+  ansible.builtin.git:
+    repo: "https://github.com/zsh-users/zsh-autosuggestions"
+    dest: "~/.zsh/zsh-autosuggestions"
+  tags:
+    - always
+
+- name: Install Starship
+  ansible.builtin.shell:
+    curl -sS https://starship.rs/install.sh | sh -s -- -y
+  tags:
+    - always

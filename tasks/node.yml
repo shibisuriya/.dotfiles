@@ -1,0 +1,38 @@
+- name: Install nvm
+  shell:
+    curl -o-
+    https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh
+    | bash
+  args:
+    executable: /bin/bash
+  tags:
+    - node
+    - always
+
+- name: Install Node.js 18 using nvm
+  shell: |
+    source ~/.nvm/nvm.sh && nvm install 18 && nvm alias 18
+  args:
+    executable: /bin/bash
+  tags:
+   - node
+   - always
+
+- name: Install Node.js 16 using nvm
+  shell: |
+    source ~/.nvm/nvm.sh && nvm install 16
+  args:
+    executable: /bin/bash
+  tags:
+    - node
+    - always
+
+
+- name: Install pnpm
+  shell: source ~/.nvm/nvm.sh && npm i pnpm -g
+  args:
+    executable: /bin/bash
+  tags:
+    - node
+    - always
+

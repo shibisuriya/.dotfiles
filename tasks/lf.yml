@@ -1,0 +1,9 @@
+
+- name: Install lf file manager using Go
+  shell: go install -ldflags="-s -w" github.com/gokcehan/lf@latest
+  register: out
+  environment:
+    PATH: "/usr/local/go/bin"
+    CGO_ENABLED: '0'
+  tags:
+    - lf

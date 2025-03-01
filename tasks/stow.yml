@@ -1,0 +1,11 @@
+- name: Install GNU Stow
+  apt:
+    name: stow
+    state: present
+  tags:
+    - always
+
+- name: stow dotfiles
+  shell: stow -t "$HOME" git zsh lf alacritty kitty rg tmux nvim zellij gdb
+  tags:
+    - always

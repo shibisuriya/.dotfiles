@@ -1,0 +1,50 @@
+- name: Git clone neovim repo
+  ansible.builtin.git:
+    repo: "https://github.com/neovim/neovim.git"
+    dest: "/tmp/neovim"
+  tags:
+    - neovim
+
+- name: Install dependencies for building Neovim
+  ansible.builtin.apt:
+    name:
+      - ninja-build
+      - gettext
+      - cmake
+      - unzip
+      - curl
+      - build-essential
+    state: present
+    update_cache: yes
+  tags:
+    - neovim
+
+- name: Build and install Neovim
+  ansible.builtin.command:
+    cmd: "make install"
+    chdir: "/tmp/neovim"
+  tags:
+    - neovim
+
+- name: Remove Neovim repository
+  ansible.builtin.file:
+    path: "/tmp/neovim"
+    state: absent
+  tags:
+    - neovim
+
+- name: Install ripgrep
+  apt: name=ripgrep
+  tags:
+    - neovim
+
+
+- name: Install prettier for conform.nvim
+  shell: source ~/.nvm/nvm.sh && npm i prettier -g
+  args:
+    executable: /bin/bash
+  tags:
+    - neovim
+    - node
+    - always
+

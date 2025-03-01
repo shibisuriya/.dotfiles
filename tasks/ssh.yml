@@ -1,0 +1,19 @@
+- name: Install SSH server
+  apt: name=openssh-server
+  tags:
+    - ssh
+
+- name: Create a dir. for ssh server
+  ansible.builtin.file:
+    path: /var/run/sshd
+    state: directory
+  tags:
+    - ssh
+
+- name: Enable SSH server
+  ansible.builtin.systemd:
+    name: ssh
+    enabled: true
+  tags:
+    - ssh
+

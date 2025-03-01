@@ -1,0 +1,28 @@
+- name: Remove existing Go installation
+  file:
+    path: /usr/local/go
+    state: absent
+    force: yes
+  tags:
+    - lf
+    - go
+    - fzf
+
+- name: Download Go binary
+  get_url:
+    url: https://go.dev/dl/go1.23.1.linux-amd64.tar.gz
+    dest: /tmp/go1.23.1.linux-amd64.tar.gz
+  tags:
+    - lf
+    - go
+    - fzf
+
+- name: Extract Go binary
+  ansible.builtin.unarchive:
+    src: /tmp/go1.23.1.linux-amd64.tar.gz
+    dest: /usr/local
+    remote_src: yes
+  tags:
+    - lf
+    - go
+    - fzf
