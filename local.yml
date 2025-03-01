@@ -1,0 +1,34 @@
+- hosts: localhost
+  become: true
+  pre_tasks:
+    - name: Update cache
+      apt:
+        update_cache: true
+      tags:
+        - always
+
+  tasks:
+    - import_tasks: ./tasks/utilities.yml
+
+    - import_tasks: ./tasks/zsh.yml
+
+    - import_tasks: ./tasks/stow.yml
+
+    - import_tasks: ./tasks/python.yml
+
+    - import_tasks: ./tasks/node.yml
+
+    - import_tasks: ./tasks/rust.yml
+
+    - import_tasks: ./tasks/go.yml # `lf` depends on `go`, so install `go` before `lf`.
+
+    - import_tasks: ./tasks/lf.yml
+
+    - import_tasks: ./tasks/fzf.yml
+
+    - import_tasks: ./tasks/neovim.yml
+
+    - import_tasks: ./tasks/dsa.yml
+
+    - import_tasks: ./tasks/ssh.yml
+
