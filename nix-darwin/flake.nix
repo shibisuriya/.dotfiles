@@ -1,5 +1,5 @@
 {
-  description = "Example nix-darwin system flake";
+  description = "Shibi's nix-darwin system flake";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
@@ -14,9 +14,10 @@
       # $ nix-env -qaP | grep wget
       environment.systemPackages =
         [ 
-	   pkgs.vim
 	   pkgs.neovim
 	   pkgs.lf
+	   pkgs.alacritty
+	   pkgs.git
         ];
 
       # Necessary for using flakes on this system.
