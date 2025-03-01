@@ -13,8 +13,10 @@
       # List packages installed in system profile. To search by name, run:
       # $ nix-env -qaP | grep wget
       environment.systemPackages =
-        [ 
-           
+        [
+	   pkgs.libgccjit
+	   pkgs.fnm
+	   pkgs.python39
 	   pkgs.cowsay
 	   pkgs.htop
 	   pkgs.qemu

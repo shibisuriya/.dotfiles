@@ -2,6 +2,11 @@
 
 My dotfiles
 
+# A note to myself
+
+This is a public repo, make sure to not commit and push sensitive information to it. 
+Make sure to clean up the commit history if you accidentally pushed sensitive information
+to the remote.
 
 ## nix-darwin
 
