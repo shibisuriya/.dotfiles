@@ -14,6 +14,8 @@
       # $ nix-env -qaP | grep wget
       environment.systemPackages =
         [
+	   pkgs.fzf
+	   pkgs.starship
 	   pkgs.libgccjit
 	   pkgs.fnm
 	   pkgs.python39
