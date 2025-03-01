@@ -14,10 +14,22 @@
       # $ nix-env -qaP | grep wget
       environment.systemPackages =
         [ 
+           
+	   pkgs.cowsay
+	   pkgs.htop
+	   pkgs.qemu
+	   pkgs.fd
+	   pkgs.stow
+	   pkgs.tmux
 	   pkgs.neovim
+	   pkgs.ripgrep
 	   pkgs.lf
 	   pkgs.alacritty
 	   pkgs.git
+	   pkgs.kitty
+	   pkgs.aerospace
+	   pkgs.pandoc
+	   pkgs.tree
         ];
 
       # Necessary for using flakes on this system.
