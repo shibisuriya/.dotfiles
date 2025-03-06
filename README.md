@@ -58,5 +58,48 @@ gracefully, but for now I am satisfied with Stow.
 
 ## Docker image
 
-You can create a docker image (Ubuntu based) which has all
-of the programs preinstalled.
+You can build a Ubuntu based docker image which has most of
+the programs you need preinstalled and configured using your
+dotfiles.
+
+To build the docker image,
+
+```bash
+docker build --target prod -t dotfiles .
+```
+
+You can then create a container using this image and copy or
+volume mount directories/files from your host. This is
+extremely useful for tinkering/testing/learning new things
+without worrying about random programs modifying your host’s
+settings.
+
+```bash
+docker run -it --rm -v .:/root/directory_1 dotfiles
+```
+
+Currently I am using ansible playbook to install and
+configure the programs that I need in the Docker
+container... I am planning to replace ansible with nix... In
+any cases, you might want to debug/change the build
+process...
+
+To create a Ubuntu based docker image that has Ansible and
+Nix preinstalled,
+
+```bash
+docker build --target dev -t dotfiles:dev .
+```
+
+Spin up a container based on this image and volume
+mount/copy your dotfiles into it.
+
+```bash
+docker run -it --rm -v .:/root/.dotfiles dotfiles:dev
+```
+
+Run the ansible playbook,
+
+```bash
+ansible-playbook /root/.dotfiles/local.yml
+```
