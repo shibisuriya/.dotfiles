@@ -56,6 +56,14 @@ lfcd () {
     cd "$(command lf -print-last-dir "$@")"
 }
 
+clear() {
+  if [[ -n "$TMUX" ]]; then
+    printf "\033c"
+    tmux send-keys -R \; clear-history
+  else
+    tput reset
+  fi
+}
 
 # utils
 alias fs=". ~/scripts/fuzzy_folder_search.zsh"
