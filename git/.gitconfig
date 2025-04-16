@@ -1,3 +1,16 @@
+# I have removed my personal information such as email, name, etc. from this file,
+# if the essential values are not supplied git won't work, it will ask you to configure them manually
+# by executing commands!
+
+# To configure your email,
+# 'git config --global user.email "you@example.com"'
+
+# To configure your name,
+# 'git config --global user.name "Your Name"'
+
+# To prevent myself from committing and pushing sensitive information I am
+# adding this file to `.gitignore`.
+
 [user]
 	email =
 	name =
