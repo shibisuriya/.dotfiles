@@ -8,11 +8,6 @@
   tags:
     - always
 
-- name: Install git
-  apt: name=git
-  tags:
-    - always
-
 - name: Install xclip
   apt: name=xclip
   tags:
