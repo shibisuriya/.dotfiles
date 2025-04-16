@@ -80,3 +80,26 @@ map x cut
 
 map i paste-image
 
+cmd open ${{
+    # `$f` stores the path of the file the user opened by pressing the L or Right arrow key on it.
+
+    case $(file --mime-type -Lb $f) in
+
+        text/*) nvim $f;; # for text files
+
+		application/json) nvim $f;; # for json files
+
+  		*) 
+			if command -v xdg-open > /dev/null 2>&1; then
+                xdg-open "$f" > /dev/null 2>&1
+
+            elif command -v open > /dev/null 2>&1; then
+                open "$f" > /dev/null 2>&1
+
+            else
+                echo "No suitable open command found." >&2
+
+            fi
+        	;;
+    esac
+}}
