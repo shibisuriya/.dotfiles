@@ -29,10 +29,6 @@ fi
 source <(fzf --zsh)
 
 
-# For nvm
-export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-
 export PATH=$PATH:/usr/local/go/bin # lf file manager needs golang.
 export PATH=$PATH:~/go/bin # globally installed go packages are stored here.
 
@@ -103,8 +99,6 @@ yt-snip() {
 
       docker-compose -f ~/scripts/yt-snip/docker-compose.yml run --rm yt-snip "$@"
 }
-
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 
 export PATH="$PATH:/usr/local/texlive/2018/bin/x86_64-darwin"
