@@ -106,7 +106,7 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[typescriptreact]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "rvest.vs-code-prettier-eslint"
   },
   "editor.indentSize": "tabSize",
   "editor.guides.indentation": false,
@@ -143,5 +143,6 @@
   "gitlens.home.preview.enabled": false,
   "scm.graph.pageOnScroll": false,
   "workbench.tree.renderIndentGuides": "none",
+  "diffEditor.renderSideBySide": true,
   "workbench.sideBar.location": "right"
 }

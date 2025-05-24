@@ -9,6 +9,7 @@ fi
 
 if $is_mac; then
     export PATH="/opt/homebrew/bin:$PATH" # for homebrew.
+    export PATH="/Applications/IntelliJ IDEA CE.app/Contents/MacOS:$PATH" # for Intellij idea
     source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
     source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
@@ -46,6 +47,7 @@ alias v="nvim ."
 alias c="code ."
 alias o="open ."
 alias lf="lfcd"
+alias i="idea"
 
 lfcd () {
     # `command` is needed in case `lfcd` is aliased to `lf`
