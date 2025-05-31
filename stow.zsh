@@ -25,12 +25,12 @@ packages=()
 
 if [[ "$(uname)" == "Darwin" ]]; then
   # For macOS
-  packages=("aerospace" "alacritty" "git" "kitty" "lf" "nvim" "obsidian" "rg" "tmux" "zsh")
+  packages=("aerospace" "alacritty" "git" "kitty" "lf" "nvim" "obsidian" "rg" "tmux" "zsh" "nix")
   vscode_settings_dir="$HOME/Library/Application Support/Code/User"
 
 else
   # For Linux
-  packages=("alacritty" "git" "kitty" "lf" "nvim" "obsidian" "rg" "tmux" "zsh")
+  packages=("alacritty" "git" "kitty" "lf" "nvim" "obsidian" "rg" "tmux" "zsh" "nix")
   vscode_settings_dir="$HOME/.config/Code/User"
 fi
 
