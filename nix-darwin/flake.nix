@@ -2,12 +2,20 @@
   description = "Shibi's nix-darwin system flake";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
-    nix-darwin.url = "github:LnL7/nix-darwin/master";
-    nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
+    nixpkgs = {
+      url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+    };
+    nix-darwin = {
+      url = "github:LnL7/nix-darwin/master";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = inputs@{ self, nix-darwin, nixpkgs }:
+  outputs = inputs@{ self, nix-darwin, nixpkgs, home-manager }:
     let
       configuration = { pkgs, ... }: {
         # List packages installed in system profile. To search by name, run:
@@ -37,6 +45,10 @@
             pkgs.pandoc
             pkgs.tree
           ];
+
+        system.defaults = {
+          dock.autohide = true;
+        };
 
         # Necessary for using flakes on this system.
         nix.settings.experimental-features = "nix-command flakes";

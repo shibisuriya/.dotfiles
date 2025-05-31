@@ -103,3 +103,15 @@ Run the ansible playbook,
 ```bash
 ansible-playbook /root/.dotfiles/local.yml
 ```
+
+## Formatting .nix files
+
+Code formatters to format .nix files such as 'alejandra', 'nixfmt', etc. for Neovim
+are not supported in Apple Silicon.
+
+.nix files can be formatted using the 'nix fmt' command,
+
+```bash
+cd ~/.dotfiles/nix-darwin
+nix fmt
+```
