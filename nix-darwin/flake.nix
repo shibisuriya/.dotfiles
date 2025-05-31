@@ -28,7 +28,7 @@
             pkgs.starship
             pkgs.libgccjit
             pkgs.fnm
-            pkgs.python39
+            pkgs.python314
             pkgs.cowsay
             pkgs.htop
             pkgs.qemu
@@ -46,9 +46,13 @@
             pkgs.tree
           ];
 
+
+        system.primaryUser = "shibi";
+
         system.defaults = {
           dock.autohide = true;
         };
+
 
         # Necessary for using flakes on this system.
         nix.settings.experimental-features = "nix-command flakes";
