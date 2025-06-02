@@ -17,11 +17,12 @@
 
   outputs = inputs@{ self, nix-darwin, nixpkgs, home-manager }:
     let
-      configuration = { pkgs, ... }: {
+     configuration = { pkgs, ... }: {
         # List packages installed in system profile. To search by name, run:
         # $ nix-env -qaP | grep wget
         environment.systemPackages =
           [
+            pkgs.rustup
             pkgs.zsh-autosuggestions
             pkgs.firefox-unwrapped
             pkgs.fzf
@@ -51,6 +52,10 @@
 
         system.defaults = {
           dock.autohide = true;
+          finder = {
+            AppleShowAllFiles = true;
+            AppleShowAllExtensions = true;
+          };
         };
 
 
@@ -71,7 +76,7 @@
         nixpkgs.hostPlatform = "aarch64-darwin";
 
         # I haven't tested this, test it on a freshly
-        # installed macOS... 
+        # installed macOS...
         # - [x] Works when CLT is already present.
         # - [ ] Build when CLT is not installed.
         system.activationScripts.ensureCLT.text = ''
