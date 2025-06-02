@@ -69,6 +69,17 @@
 
         # The platform the configuration will be used on.
         nixpkgs.hostPlatform = "aarch64-darwin";
+
+        # I haven't tested this, test it on a freshly
+        # installed macOS... 
+        # - [x] Works when CLT is already present.
+        # - [ ] Build when CLT is not installed.
+        system.activationScripts.ensureCLT.text = ''
+          if ! xcode-select -p &>/dev/null; then
+            echo "Xcode Command Line Tools not installed. Run: xcode-select --install"
+            exit 1
+          fi
+        '';
       };
     in
     {

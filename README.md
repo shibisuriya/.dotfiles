@@ -42,6 +42,16 @@ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 Note: This step needs to be automated.
 
+7. Install 'Apple Command Line Tools (CLT)'
+
+```bash
+xcode-select install
+```
+
+CLT is a subset of Xcode, the command above doesn't install full Xcode.
+
+Note: This step can't be automated using nix & must be performed manually.
+
 6. Symlink your dotfiles to appropriate locations on your
    machine using GNU Stow,
 
