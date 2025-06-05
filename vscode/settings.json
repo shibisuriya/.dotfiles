@@ -2,47 +2,24 @@
   "vim.leader": "<space>",
   "vim.normalModeKeyBindings": [
     {
-      "before": [
-        "g",
-        "r"
-      ],
-      "commands": [
-        "references-view.findReferences"
-      ]
+      "before": ["g", "r"],
+      "commands": ["references-view.findReferences"]
     },
     {
-      "before": [
-        "<leader>",
-        "c",
-        "p"
-      ],
-      "commands": [
-        "copyRelativeFilePath"
-      ],
+      "before": ["<leader>", "c", "p"],
+      "commands": ["copyRelativeFilePath"],
       "when": "editorFocus"
     }
   ],
   "vim.visualModeKeyBindings": [
     {
-      "before": [
-        "<leader>",
-        "h",
-        "s"
-      ],
-      "commands": [
-        "git.stageSelectedRanges"
-      ],
+      "before": ["<leader>", "h", "s"],
+      "commands": ["git.stageSelectedRanges"],
       "when": "isInDiffEditor && !operationInProgress"
     },
     {
-      "before": [
-        "<leader>",
-        "h",
-        "r"
-      ],
-      "commands": [
-        "git.revertSelectedRanges"
-      ],
+      "before": ["<leader>", "h", "r"],
+      "commands": ["git.revertSelectedRanges"],
       "when": "isInDiffEditor && !operationInProgress"
     }
   ],
@@ -66,7 +43,28 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[jsonc]": {
-    "editor.defaultFormatter": "vscode.json-language-features"
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[yaml]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[python]": {
+    "editor.defaultFormatter": "ms-python.autopep8"
+  },
+  "[mdx]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[css]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[markdown]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "blockman.n01LineHeight": 0,
   "workbench.colorCustomizations": {
@@ -84,30 +82,9 @@
   "guides.active.width": 4,
   "redhat.telemetry.enabled": true,
   "npm.keybindingsChangedWarningShown": true,
-  "[css]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[javascriptreact]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[markdown]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
   "vim.useSystemClipboard": true,
   "terminal.explorerKind": "external",
   "terminal.external.osxExec": "alacritty",
-  "[yaml]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[python]": {
-    "editor.defaultFormatter": "ms-python.autopep8"
-  },
-  "[mdx]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[typescriptreact]": {
-    "editor.defaultFormatter": "rvest.vs-code-prettier-eslint"
-  },
   "editor.indentSize": "tabSize",
   "editor.guides.indentation": false,
   "editor.minimap.enabled": false,
@@ -130,12 +107,7 @@
     "**/node_modules/**": true
   },
   "eslint.options": {
-    "extensions": [
-      ".js",
-      ".jsx",
-      ".ts",
-      ".tsx"
-    ]
+    "extensions": [".js", ".jsx", ".ts", ".tsx"]
   },
   "editor.bracketPairColorization.enabled": false,
   "diffEditor.ignoreTrimWhitespace": false,
