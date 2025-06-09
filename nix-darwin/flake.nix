@@ -36,7 +36,7 @@
             pkgs.fd
             pkgs.stow
             pkgs.tmux
-            pkgs.neovim
+            # pkgs.neovim # The 'vim-tmux-navigator' plugin doesn't work when I install neovim using nix-darwin, I have installed neovim using brew.
             pkgs.ripgrep
             pkgs.lf
             pkgs.alacritty
