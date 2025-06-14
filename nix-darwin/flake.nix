@@ -52,6 +52,7 @@
 
         system.defaults = {
           dock.autohide = true;
+          dock.expose-group-apps = true;
           finder = {
             AppleShowAllFiles = true;
             AppleShowAllExtensions = true;
