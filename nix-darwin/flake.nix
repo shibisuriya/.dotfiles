@@ -64,6 +64,8 @@
         homebrew.enable = true;
         homebrew.brews = [
 	      "neovim"
+              "zsh-autosuggestions"
+              "zsh-syntax-highlighting"
         ];
 
 
