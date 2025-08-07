@@ -57,6 +57,10 @@
         system.primaryUser = "shibi";
 
         system.defaults = {
+              NSGlobalDomain = {
+              KeyRepeat = 2; # After running `darwin-rebuild`, signout & sign back in for this to take effect.
+              InitialKeyRepeat = 15;
+          };
           dock.autohide = true;
           dock.expose-group-apps = true;
           finder = {
@@ -106,7 +110,7 @@
       # Build darwin flake using:
       # $ darwin-rebuild build --flake .#simple
       darwinConfigurations."shibi" = nix-darwin.lib.darwinSystem {
-        modules = [ 
+        modules = [
           configuration
           /*
             home-manager.darwinModules.home-manager
