@@ -67,6 +67,7 @@ clear() {
 alias fs=". ~/scripts/fuzzy_folder_search.zsh"
 alias lazy-jenkins='node ./src/index.js'
 alias node-scrub="~/scripts/node_scrub.zsh"
+alias diff-checker="~/scripts/diff-checker.zsh"
 
 # In normal mode, press <ctrl> + e to edit the command written so far edit in neovim.
 export VISUAL=nvim

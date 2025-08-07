@@ -24,6 +24,9 @@
         # $ nix-env -qaP | grep wget
         environment.systemPackages =
           [
+            pkgs.parallel-full
+            pkgs.httpie
+            pkgs.maven
             pkgs.rustup
             pkgs.zsh-autosuggestions
             pkgs.firefox-unwrapped
@@ -47,6 +50,7 @@
             pkgs.aerospace
             pkgs.pandoc
             pkgs.tree
+            pkgs.flameshot
           ];
 
 

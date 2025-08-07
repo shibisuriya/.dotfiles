@@ -116,5 +116,6 @@
   "scm.graph.pageOnScroll": false,
   "workbench.tree.renderIndentGuides": "none",
   "diffEditor.renderSideBySide": true,
-  "workbench.sideBar.location": "right"
+  "workbench.sideBar.location": "right",
+  "diffEditor.useInlineViewWhenSpaceIsLimited": false
 }
