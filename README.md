@@ -1,5 +1,5 @@
 # My dotfiles
 
 Refer my
-[blog post](https://shibisuriya.github.io/blog/blog/how-i-manage-my-dotfiles)
-(hosted using Github pages).
+<a target="_blank" href="https://shibisuriya.github.io/blog/blog/how-i-manage-my-dotfiles">blog
+post</a> (hosted using Github pages).
