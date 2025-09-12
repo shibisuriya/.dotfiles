@@ -21,18 +21,13 @@
     - node
     - always
 
-- name: Install Node.js 18 using nvm
+- name: Install Node.js 18 & 16 using fnm
   shell: |
-    source ~/.nvm/nvm.sh && nvm install 18 && nvm alias 18
-  args:
-    executable: /bin/bash
-  tags:
-    - node
-    - always
-
-- name: Install Node.js 16 using nvm
-  shell: |
-    source ~/.nvm/nvm.sh && nvm install 16
+    export PATH="$HOME/.fnm:$PATH"
+    eval "$(fnm env)"
+    fnm install 18
+    fnm install 16
+    fnm default 18
   args:
     executable: /bin/bash
   tags:
