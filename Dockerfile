@@ -13,7 +13,7 @@ ARG DEBIAN_FRONTEND=noninteractive
 # So, install `software-properties-common` before
 # running the `apt-add-repository` command.
 
-RUN apt update && apt install -y software-properties-common curl git unzip
+RUN apt update && apt install -y software-properties-common curl git # Installing curl here itself to install nix package manager.
 
 RUN curl -L https://nixos.org/nix/install | sh -s -- --daemon --yes  
 

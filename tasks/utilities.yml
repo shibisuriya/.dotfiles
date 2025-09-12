@@ -3,6 +3,11 @@
   tags:
     - always
 
+- name: Install `unzip`
+  apt: name=unzip
+  tags:
+    - always
+
 - name: Install xclip
   apt: name=xclip
   tags:
