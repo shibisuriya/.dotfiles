@@ -38,13 +38,14 @@
   tags:
     - neovim
 
-
 - name: Install prettier for conform.nvim
-  shell: source ~/.nvm/nvm.sh && npm i prettier -g
+  shell: |
+    export PATH="$HOME/.local/share/fnm:$PATH"
+    eval "$($HOME/.local/share/fnm/fnm env --shell zsh --use-on-cd)"
+    npm i prettier -g
   args:
-    executable: /bin/bash
+    executable: /bin/zsh
   tags:
     - neovim
     - node
     - always
-
