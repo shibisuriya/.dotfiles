@@ -34,10 +34,13 @@
     - node
     - always
 
-- name: Install pnpm
-  shell: source ~/.nvm/nvm.sh && npm i pnpm -g
+- name: Install pnpm globally
+  shell: |
+    export PATH="$HOME/.local/share/fnm:$PATH"
+    eval "$($HOME/.local/share/fnm/fnm env --shell zsh --use-on-cd)"
+    npm install -g pnpm
   args:
-    executable: /bin/bash
+    executable: /bin/zsh
   tags:
     - node
     - always
