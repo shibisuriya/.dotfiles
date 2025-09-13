@@ -23,13 +23,13 @@
 
 - name: Install Node.js 18 & 16 using fnm
   shell: |
-    export PATH="$HOME/.fnm:$PATH"
-    eval "$(fnm env)"
+    export PATH="$HOME/.local/share/fnm:$PATH"
+    eval "$($HOME/.local/share/fnm/fnm env --shell zsh --use-on-cd)"
     fnm install 18
     fnm install 16
     fnm default 18
   args:
-    executable: /bin/bash
+    executable: /bin/zsh
   tags:
     - node
     - always
