@@ -38,7 +38,7 @@ map a new-file
 
 cmd delete ${{
     echo "\n"
-    printf "Delete '$f'? Type 'Yes' to confirm: "
+    printf "Delete \033[1;31m'%s'\033[0m? Type 'Yes' to confirm: " "$f"
     read answer
     if [ "$answer" = "Yes" ]; then
         rm -rf "$f"
@@ -89,7 +89,7 @@ cmd open ${{
 
 		application/json) nvim $f;; # for json files
 
-  		*) 
+  		*)
 			if command -v xdg-open > /dev/null 2>&1; then
                 xdg-open "$f" > /dev/null 2>&1
 
