@@ -24,6 +24,7 @@
         # $ nix-env -qaP | grep wget
         environment.systemPackages =
           [
+            pkgs.gimp-with-plugins
             pkgs.parallel-full
             pkgs.httpie
             pkgs.maven
