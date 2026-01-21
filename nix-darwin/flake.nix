@@ -25,6 +25,11 @@
         environment.systemPackages =
           [
             pkgs.gimp-with-plugins
+            pkgs.go
+            # nix-darwin doesn't added Transmission GUI to mac's Launchpad, to
+            # launch an instance of Transmission GUI use the command `transmission-qt`.
+            pkgs.transmission_4-qt
+            pkgs.vlc-bin
             pkgs.parallel-full
             pkgs.httpie
             pkgs.maven
