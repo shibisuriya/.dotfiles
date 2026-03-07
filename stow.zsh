@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/usr/bin/env zsh
 
 unstow=false
 for arg in "$@"; do
@@ -30,7 +30,7 @@ if [[ "$(uname)" == "Darwin" ]]; then
 
 else
   # For Linux
-  packages=("alacritty" "git" "kitty" "lf" "nvim" "obsidian" "rg" "tmux" "zsh" "nix")
+  packages=("alacritty" "git" "kitty" "lf" "nvim" "obsidian" "rg" "tmux" "zsh" "home-manager")
   vscode_settings_dir="$HOME/.config/Code/User"
 fi
 
