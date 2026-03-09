@@ -16,7 +16,8 @@ home-manager switch
 ## Change your default shell from bash to zsh,
 
 ```bash
-chsh -s $(which zsh)
+command -v zsh | sudo tee -a /etc/shells
+chsh -s "$(command -v zsh)"
 ```
 
 ## Symlink all of your dotfiles to their target location
