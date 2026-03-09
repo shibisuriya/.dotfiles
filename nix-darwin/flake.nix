@@ -17,117 +17,119 @@
     */
   };
 
-  outputs = inputs@{ self, nix-darwin, nixpkgs /*, home-manager */ }:
-    let
-     configuration = { pkgs, ... }: {
-        # List packages installed in system profile. To search by name, run:
-        # $ nix-env -qaP | grep wget
-        environment.systemPackages =
-          [
-            pkgs.gimp-with-plugins
-            pkgs.go
-            # nix-darwin doesn't added Transmission GUI to mac's Launchpad, to
-            # launch an instance of Transmission GUI use the command `transmission-qt`.
-            pkgs.transmission_4-qt
-            pkgs.vlc-bin
-            pkgs.parallel-full
-            pkgs.httpie
-            pkgs.maven
-            pkgs.rustup
-            pkgs.zsh-autosuggestions
-            pkgs.firefox-unwrapped
-            pkgs.fzf
-            pkgs.starship
-            pkgs.libgccjit
-            pkgs.fnm
-            pkgs.python314
-            pkgs.cowsay
-            pkgs.htop
-            pkgs.qemu
-            pkgs.fd
-            pkgs.stow
-            pkgs.tmux
-            # pkgs.neovim # The 'vim-tmux-navigator' plugin doesn't work when I install neovim using nix-darwin, I have installed neovim using brew.
-            pkgs.ripgrep
-            pkgs.lf
-            pkgs.alacritty
-            pkgs.git
-            pkgs.kitty
-            pkgs.aerospace
-            pkgs.pandoc
-            pkgs.tree
-            pkgs.flameshot
-          ];
+  outputs = inputs @ {
+    self,
+    nix-darwin,
+    nixpkgs,
+    /*
+    , home-manager
+    */
+  }: let
+    configuration = {pkgs, ...}: {
+      # List packages installed in system profile. To search by name, run:
+      # $ nix-env -qaP | grep wget
+      environment.systemPackages = [
+        pkgs.gimp-with-plugins
+        pkgs.go
+        # nix-darwin doesn't added Transmission GUI to mac's Launchpad, to
+        # launch an instance of Transmission GUI use the command `transmission-qt`.
+        pkgs.transmission_4-qt
+        pkgs.vlc-bin
+        pkgs.parallel-full
+        pkgs.httpie
+        pkgs.maven
+        pkgs.rustup
+        pkgs.zsh-autosuggestions
+        pkgs.firefox-unwrapped
+        pkgs.fzf
+        pkgs.starship
+        pkgs.libgccjit
+        pkgs.fnm
+        pkgs.python314
+        pkgs.cowsay
+        pkgs.htop
+        pkgs.qemu
+        pkgs.fd
+        pkgs.stow
+        pkgs.tmux
+        # pkgs.neovim # The 'vim-tmux-navigator' plugin doesn't work when I install neovim using nix-darwin, I have installed neovim using brew.
+        pkgs.ripgrep
+        pkgs.lf
+        pkgs.alacritty
+        pkgs.git
+        pkgs.kitty
+        pkgs.aerospace
+        pkgs.pandoc
+        pkgs.tree
+        pkgs.flameshot
+      ];
 
+      system.primaryUser = "shibi";
 
-        system.primaryUser = "shibi";
-
-        system.defaults = {
-              NSGlobalDomain = {
-              KeyRepeat = 2; # After running `darwin-rebuild`, signout & sign back in for this to take effect.
-              InitialKeyRepeat = 15;
-          };
-          dock.autohide = true;
-          dock.expose-group-apps = true;
-          finder = {
-            AppleShowAllFiles = true;
-            AppleShowAllExtensions = true;
-          };
+      system.defaults = {
+        NSGlobalDomain = {
+          KeyRepeat = 2; # After running `darwin-rebuild`, signout & sign back in for this to take effect.
+          InitialKeyRepeat = 15;
         };
-
-        homebrew.enable = true;
-        homebrew.brews = [
-	      "neovim"
-              "zsh-autosuggestions"
-              "zsh-syntax-highlighting"
-        ];
-
-
-        # Necessary for using flakes on this system.
-        nix.settings.experimental-features = "nix-command flakes";
-
-        # Enable alternative shell support in nix-darwin.
-        # programs.fish.enable = true;
-
-        # Set Git commit hash for darwin-version.
-        system.configurationRevision = self.rev or self.dirtyRev or null;
-
-        # Used for backwards compatibility, please read the changelog before changing.
-        # $ darwin-rebuild changelog
-        system.stateVersion = 6;
-
-        # The platform the configuration will be used on.
-        nixpkgs.hostPlatform = "aarch64-darwin";
-
-        # I haven't tested this, test it on a freshly
-        # installed macOS...
-        # - [x] Works when CLT is already present.
-        # - [ ] Build when CLT is not installed.
-        system.activationScripts.ensureCLT.text = ''
-          if ! xcode-select -p &>/dev/null; then
-            echo "Xcode Command Line Tools not installed. Run: xcode-select --install"
-            exit 1
-          fi
-        '';
+        dock.autohide = true;
+        dock.expose-group-apps = true;
+        finder = {
+          AppleShowAllFiles = true;
+          AppleShowAllExtensions = true;
+        };
       };
-    in
-    {
-      formatter.aarch64-darwin = nixpkgs.legacyPackages.aarch64-darwin.nixpkgs-fmt;
-      # Build darwin flake using:
-      # $ darwin-rebuild build --flake .#simple
-      darwinConfigurations."shibi" = nix-darwin.lib.darwinSystem {
-        modules = [
-          configuration
-          /*
-            home-manager.darwinModules.home-manager
-            {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              users.users.shibi.home = "/Users/shibi";
-              home-manager.users.shibi = import ./home.nix;
-            }
-          */
-        ];
-      };
+
+      homebrew.enable = true;
+      homebrew.brews = [
+        "neovim"
+        "zsh-autosuggestions"
+        "zsh-syntax-highlighting"
+      ];
+
+      # Necessary for using flakes on this system.
+      nix.settings.experimental-features = "nix-command flakes";
+
+      # Enable alternative shell support in nix-darwin.
+      # programs.fish.enable = true;
+
+      # Set Git commit hash for darwin-version.
+      system.configurationRevision = self.rev or self.dirtyRev or null;
+
+      # Used for backwards compatibility, please read the changelog before changing.
+      # $ darwin-rebuild changelog
+      system.stateVersion = 6;
+
+      # The platform the configuration will be used on.
+      nixpkgs.hostPlatform = "aarch64-darwin";
+
+      # I haven't tested this, test it on a freshly
+      # installed macOS...
+      # - [x] Works when CLT is already present.
+      # - [ ] Build when CLT is not installed.
+      system.activationScripts.ensureCLT.text = ''
+        if ! xcode-select -p &>/dev/null; then
+          echo "Xcode Command Line Tools not installed. Run: xcode-select --install"
+          exit 1
+        fi
+      '';
     };
+  in {
+    formatter.aarch64-darwin = nixpkgs.legacyPackages.aarch64-darwin.nixpkgs-fmt;
+    # Build darwin flake using:
+    # $ darwin-rebuild build --flake .#simple
+    darwinConfigurations."shibi" = nix-darwin.lib.darwinSystem {
+      modules = [
+        configuration
+        /*
+        home-manager.darwinModules.home-manager
+        {
+          home-manager.useGlobalPkgs = true;
+          home-manager.useUserPackages = true;
+          users.users.shibi.home = "/Users/shibi";
+          home-manager.users.shibi = import ./home.nix;
+        }
+        */
+      ];
+    };
+  };
 }
