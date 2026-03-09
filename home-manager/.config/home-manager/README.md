@@ -3,7 +3,7 @@
 Run this command after cloning your dotfiles repo.
 
 ```bash
-nix run github:nix-community/home-manager --extra-experiemental-features 'nix-command flakes' -- switch --flake ~/.dotfiles/home-manager/.config/home-manager/
+nix run github:nix-community/home-manager --extra-experimental-features 'nix-command flakes' -- switch --flake ~/.dotfiles/home-manager/.config/home-manager/
 ```
 
 The `home-manager` command will be available if the command
