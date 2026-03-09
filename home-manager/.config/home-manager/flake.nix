@@ -50,7 +50,7 @@
             pkgs.firefox-unwrapped
             pkgs.fzf
             pkgs.starship
-            pkgs.libgccjit
+            pkgs.gcc
             pkgs.fnm
             pkgs.python314
             pkgs.cowsay

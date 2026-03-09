@@ -26,4 +26,11 @@ chsh -s "$(command -v zsh)"
 ./stow.zsh
 ```
 
+## Install TPM (Tmux Package Manager)
+
+```bash
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+```
+
+
 TODO: Transfer the content of this readme to your blog post.
