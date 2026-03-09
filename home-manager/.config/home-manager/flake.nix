@@ -42,6 +42,7 @@
             pkgs.transmission_4-qt
             ## pkgs.vlc-bin
             pkgs.parallel-full
+            pkgs.zsh
             pkgs.httpie
             pkgs.maven
             pkgs.rustup

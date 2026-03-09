@@ -1,14 +1,28 @@
-## home manager
+## home-manager (Ubuntu PC)
+
+Run this command after cloning your dotfiles repo.
 
 ```bash
-nix run github:nix-community/home-manager -- switch --flake ~/.config/home-manager
+nix run github:nix-community/home-manager --extra-experiemental-features 'nix-command flakes' -- switch --flake ~/.dotfiles/home-manager/.config/home-manager/
 ```
-If you run this command you the 'home-manager' command will become available.
+
+The `home-manager` command will be available if the command
+written above executes successfully atleast ones.
 
 ```bash
 home-manager switch
 ```
 
-If you don't mention the path in the command above, home-manager will look for the flake.nix
-file in `~/.config/home-manager`.
+## Change your default shell from bash to zsh,
 
+```bash
+chsh -s $(which zsh)
+```
+
+## Symlink all of your dotfiles to their target location
+
+```bash
+./stow.zsh
+```
+
+TODO: Transfer the content of this readme to your blog post.
