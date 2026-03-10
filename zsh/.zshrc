@@ -23,8 +23,11 @@ else
         PATH="${PATH:+${PATH}:}/${HOME_DIR}/.fzf/bin"
     fi
 
-    source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-    source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+    source ~/.nix-profile/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+    source ~/.nix-profile/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+    # source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+    # source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 fi
 
 source <(fzf --zsh)

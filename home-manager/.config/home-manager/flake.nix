@@ -50,6 +50,7 @@
             pkgs.maven
             pkgs.rustup
             pkgs.zsh-autosuggestions
+            pkgs.zsh-syntax-highlighting
             pkgs.firefox-unwrapped
             pkgs.fzf
             pkgs.starship
