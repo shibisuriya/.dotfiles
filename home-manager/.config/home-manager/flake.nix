@@ -37,7 +37,6 @@
           # Pass pkgs inside the module explicitly
           home.packages = [
             pkgs.nerd-fonts.jetbrains-mono
-            pkgs.docker-compose
             pkgs.gimp-with-plugins
             pkgs.go
             # nix-darwin doesn't added Transmission GUI to mac's Launchpad, to
@@ -66,6 +65,7 @@
             pkgs.tree
             pkgs.flameshot
             pkgs.vlc
+            # pkgs.docker-compose
             # pkgs.qemu
             # pkgs.zsh
             # pkgs.zsh-autosuggestions

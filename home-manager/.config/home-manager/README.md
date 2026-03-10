@@ -43,4 +43,10 @@ sudo apt update
 sudo apt install i3
 ```
 
+## Install docker using `apt`
+
+```bash
+sudo apt install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin -y
+```
+
 TODO: Transfer the content of this readme to your blog post.
