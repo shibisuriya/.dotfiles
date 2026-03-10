@@ -32,5 +32,15 @@ chsh -s "$(command -v zsh)"
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 ```
 
+## Install i3wm
+
+The option to use i3wm is not listed in the login screen 
+when i3 is installed using home-manager, so I am installing it using apt.
+
+```bash
+sudo apt update
+sudo apt install i3
+```
+
 
 TODO: Transfer the content of this readme to your blog post.
