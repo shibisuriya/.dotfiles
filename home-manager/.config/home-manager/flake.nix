@@ -43,14 +43,10 @@
             # nix-darwin doesn't added Transmission GUI to mac's Launchpad, to
             # launch an instance of Transmission GUI use the command `transmission-qt`.
             pkgs.transmission_4-qt
-            ## pkgs.vlc-bin
             pkgs.parallel-full
-            pkgs.zsh
             pkgs.httpie
             pkgs.maven
             pkgs.rustup
-            pkgs.zsh-autosuggestions
-            pkgs.zsh-syntax-highlighting
             pkgs.firefox-unwrapped
             pkgs.fzf
             pkgs.starship
@@ -65,13 +61,16 @@
             pkgs.neovim
             pkgs.ripgrep
             pkgs.lf
-            pkgs.alacritty
             pkgs.git
-            pkgs.kitty
             pkgs.pandoc
             pkgs.tree
             pkgs.flameshot
+            pkgs.vlc
             # pkgs.qemu
+            # pkgs.zsh
+            # pkgs.zsh-autosuggestions
+            # pkgs.zsh-syntax-highlighting
+            # pkgs.kitty
           ];
         }
       ];

@@ -16,7 +16,7 @@ home-manager switch
 ## Change your default shell from bash to zsh,
 
 ```bash
-command -v zsh | sudo tee -a /etc/shells
+sudo apt install zsh zsh-autosuggestions zsh-syntax-highlighting kitty -y
 chsh -s "$(command -v zsh)"
 ```
 
@@ -34,13 +34,13 @@ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 ## Install i3wm
 
-The option to use i3wm is not listed in the login screen 
-when i3 is installed using home-manager, so I am installing it using apt.
+The option to use i3wm is not listed in the login screen
+when i3 is installed using home-manager, so I am installing
+it using apt.
 
 ```bash
 sudo apt update
 sudo apt install i3
 ```
-
 
 TODO: Transfer the content of this readme to your blog post.
