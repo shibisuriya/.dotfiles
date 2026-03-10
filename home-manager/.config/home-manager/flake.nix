@@ -25,6 +25,8 @@
       inherit pkgs;
       modules = [
         {
+          fonts.fontconfig.enable = true;
+
           home.username = username;
           home.homeDirectory = homeDirectory;
 
@@ -34,6 +36,7 @@
 
           # Pass pkgs inside the module explicitly
           home.packages = [
+            pkgs.nerd-fonts.jetbrains-mono
             pkgs.docker-compose
             pkgs.gimp-with-plugins
             pkgs.go
