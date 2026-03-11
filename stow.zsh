@@ -30,7 +30,7 @@ if [[ "$(uname)" == "Darwin" ]]; then
 
 else
     # For Linux
-    packages=("git" "kitty" "lf" "nvim" "obsidian" "rg" "tmux" "zsh" "home-manager" "nix")
+    packages=("git" "kitty" "lf" "nvim" "obsidian" "rg" "tmux" "zsh" "home-manager" "nix" "i3")
     vscode_settings_dir="$HOME/.config/Code/User"
 fi
 
