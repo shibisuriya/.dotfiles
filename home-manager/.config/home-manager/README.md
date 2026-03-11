@@ -17,7 +17,7 @@ home-manager switch
 
 ```bash
 sudo apt update
-sudo apt install zsh zsh-autosuggestions zsh-syntax-highlighting kitty -y
+sudo apt install zsh zsh-autosuggestions zsh-syntax-highlighting -y
 chsh -s "$(command -v zsh)"
 ```
 
@@ -32,6 +32,10 @@ chsh -s "$(command -v zsh)"
 ```bash
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 ```
+
+## Download & install the Kitty terminal
+
+`https://sw.kovidgoyal.net/kitty/binary/`
 
 ## Install i3wm
 
