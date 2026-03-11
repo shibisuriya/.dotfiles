@@ -3,7 +3,7 @@
 Run this command after cloning your dotfiles repo.
 
 ```bash
-export NIX_CONFIG="experimental-features = nix-command flakes"; nix run github:nix-community/home-manager --extra-experimental-features 'nix-command flakes' -- switch --flake ~/.dotfiles/home-manager/.config/home-manager/
+export NIX_CONFIG="experimental-features = nix-command flakes"; nix run github:nix-community/home-manager -- switch --flake ~/.dotfiles/home-manager/.config/home-manager/
 ```
 
 The `home-manager` command will be available if the command
