@@ -16,6 +16,7 @@ home-manager switch
 ## Change your default shell from bash to zsh,
 
 ```bash
+sudo apt update
 sudo apt install zsh zsh-autosuggestions zsh-syntax-highlighting kitty -y
 chsh -s "$(command -v zsh)"
 ```

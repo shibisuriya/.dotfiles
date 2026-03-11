@@ -64,6 +64,7 @@
             pkgs.pandoc
             pkgs.tree
             pkgs.flameshot
+            pkgs.tor-browser
             pkgs.vlc
             # pkgs.docker-compose
             # pkgs.qemu
