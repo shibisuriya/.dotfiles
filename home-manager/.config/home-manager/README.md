@@ -1,5 +1,10 @@
 ## home-manager (Ubuntu PC)
 
+## Enable hibernate
+
+Make sure to create a swap parition while installing Ubuntu,
+the size of the swap partition must be atleast 1.2 times the
+size of the memory.
 Run this command after cloning your dotfiles repo.
 
 ```bash
