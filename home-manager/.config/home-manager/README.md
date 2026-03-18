@@ -1,6 +1,13 @@
 ## home-manager (Ubuntu PC)
 
-## Enable hibernate
+## Enable hibernate in Ubuntu
+
+- Hibernate will only work if the size of the swap partition
+  is greater than or equal to the size of the memory.
+
+- Make sure to create a swap parition while installing
+  Ubuntu, the size of the swap partition must be **atleast
+  1.2 times** the size of the memory.
 
 Make sure to create a swap parition while installing Ubuntu,
 the size of the swap partition must be atleast 1.2 times the
