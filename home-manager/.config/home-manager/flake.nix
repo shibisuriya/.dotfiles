@@ -36,6 +36,7 @@
 
           # Pass pkgs inside the module explicitly
           home.packages = [
+            pkgs.speedcrunch
             pkgs.nerd-fonts.jetbrains-mono
             pkgs.gimp-with-plugins
             pkgs.go
