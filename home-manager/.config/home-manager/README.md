@@ -1,0 +1,69 @@
+## home-manager (Ubuntu PC)
+
+## Enable hibernate in Ubuntu
+
+- Hibernate will only work if the size of the swap partition
+  is greater than or equal to the size of the memory.
+
+- Make sure to create a swap parition while installing
+  Ubuntu, the size of the swap partition must be **atleast
+  1.2 times** the size of the memory.
+
+Make sure to create a swap parition while installing Ubuntu,
+the size of the swap partition must be atleast 1.2 times the
+size of the memory.
+Run this command after cloning your dotfiles repo.
+
+```bash
+export NIX_CONFIG="experimental-features = nix-command flakes"; nix run github:nix-community/home-manager -- switch --flake ~/.dotfiles/home-manager/.config/home-manager/
+```
+
+The `home-manager` command will be available if the command
+written above executes successfully atleast ones.
+
+```bash
+home-manager switch
+```
+
+## Change your default shell from bash to zsh,
+
+```bash
+sudo apt update
+sudo apt install zsh zsh-autosuggestions zsh-syntax-highlighting -y
+chsh -s "$(command -v zsh)"
+```
+
+## Symlink all of your dotfiles to their target location
+
+```bash
+./stow.zsh
+```
+
+## Install TPM (Tmux Package Manager)
+
+```bash
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+```
+
+## Download & install the Kitty terminal
+
+`https://sw.kovidgoyal.net/kitty/binary/`
+
+## Install i3wm
+
+The option to use i3wm is not listed in the login screen
+when i3 is installed using home-manager, so I am installing
+it using apt.
+
+```bash
+sudo apt update
+sudo apt install i3
+```
+
+## Install docker using `apt`
+
+```bash
+sudo apt install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin -y
+```
+
+TODO: Transfer the content of this readme to your blog post.

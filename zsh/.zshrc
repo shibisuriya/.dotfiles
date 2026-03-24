@@ -23,6 +23,9 @@ else
         PATH="${PATH:+${PATH}:}/${HOME_DIR}/.fzf/bin"
     fi
 
+    # source ~/.nix-profile/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+    # source ~/.nix-profile/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
     source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
     source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 fi
@@ -55,12 +58,12 @@ lfcd () {
 }
 
 clear() {
-  if [[ -n "$TMUX" ]]; then
-    printf "\033c"
-    tmux send-keys -R \; clear-history
-  else
-    tput reset
-  fi
+    if [[ -n "$TMUX" ]]; then
+        printf "\033c"
+        tmux send-keys -R \; clear-history
+    else
+        tput reset
+    fi
 }
 
 # utils
@@ -76,13 +79,13 @@ bindkey -M vicmd '^e' edit-command-line
 
 yt-snip() {
 
-      # Create a directory named yt-snips in the shell's current working directory
-      # and bind mount it into the Docker container. The program running inside the
-      # container will save the trimmed video to the yt-snips directory.
+    # Create a directory named yt-snips in the shell's current working directory
+    # and bind mount it into the Docker container. The program running inside the
+    # container will save the trimmed video to the yt-snips directory.
 
-      if [ ! -d './yt-snips' ]; then
+    if [ ! -d './yt-snips' ]; then
         mkdir './yt-snips'
-      else
+    else
         # If the directory already exists, bind mount it as is, including any files it may
         # contain. This ensures the container can only access the yt-snips folder and
         # nothing else on your host machine.
@@ -98,9 +101,9 @@ yt-snip() {
             echo "exiting!"
             return
         fi
-      fi
+    fi
 
-      docker-compose -f ~/scripts/yt-snip/docker-compose.yml run --rm yt-snip "$@"
+    docker-compose -f ~/scripts/yt-snip/docker-compose.yml run --rm yt-snip "$@"
 }
 
 
