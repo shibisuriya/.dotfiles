@@ -38,26 +38,13 @@ map a new-file
 
 cmd delete ${{
     echo "\n"
-    if [ -n "$fx" ]; then
-        echo "Files selected for deletion: \n"
-        printf "\033[1;31m%s\033[0m\n" "$fx"
-    else
-        echo "File selected for deletion: \n"
-        printf "\033[1;31m%s\033[0m\n" "$f"
-    fi
+    printf "Delete \033[1;31m%s\033[0m?\n" "$f"
 
-    echo ""
-    printf "Type 'Yes' to confirm: "
+    printf "\nType 'Yes' to confirm: "
     read answer
 
     if [ "$answer" = "Yes" ]; then
-        if [ -n "$fx" ]; then
-            printf "%s\n" "$fx" | while IFS= read -r file; do
-                trash "$file"
-            done
-        else
-            trash "$f"
-        fi
+        trash "$f"
     else
         echo "\nDeletion cancelled."
     fi
