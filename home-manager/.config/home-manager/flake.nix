@@ -67,6 +67,7 @@
             pkgs.flameshot
             pkgs.tor-browser
             pkgs.vlc
+            pkgs.trash-cli
             # pkgs.docker-compose
             # pkgs.qemu
             # pkgs.zsh

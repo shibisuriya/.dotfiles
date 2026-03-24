@@ -38,14 +38,32 @@ map a new-file
 
 cmd delete ${{
     echo "\n"
-    printf "Delete \033[1;31m'%s'\033[0m? Type 'Yes' to confirm: " "$f"
-    read answer
-    if [ "$answer" = "Yes" ]; then
-        rm -rf "$f"
+    if [ -n "$fx" ]; then
+        echo "Files selected for deletion: \n"
+        printf "\033[1;31m%s\033[0m\n" "$fx"
     else
-        echo "Deletion cancelled."
+        echo "File selected for deletion: \n"
+        printf "\033[1;31m%s\033[0m\n" "$f"
+    fi
+
+    echo ""
+    printf "Type 'Yes' to confirm: "
+    read answer
+
+    if [ "$answer" = "Yes" ]; then
+        if [ -n "$fx" ]; then
+            printf "%s\n" "$fx" | while IFS= read -r file; do
+                trash "$file"
+            done
+        else
+            trash "$f"
+        fi
+    else
+        echo "\nDeletion cancelled."
     fi
 }}
+
+map d delete
 
 cmd paste-image ${{
 
@@ -75,7 +93,6 @@ cmd paste-image ${{
 
 # map n open-cwd-with-neovim
 
-map d delete
 map x cut
 
 map i paste-image
