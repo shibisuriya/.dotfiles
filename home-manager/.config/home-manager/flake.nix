@@ -68,6 +68,7 @@
             pkgs.tor-browser
             pkgs.vlc
             pkgs.trash-cli
+            pkgs.rsync
             # pkgs.docker-compose
             # pkgs.qemu
             # pkgs.zsh

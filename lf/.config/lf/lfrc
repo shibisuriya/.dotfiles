@@ -109,14 +109,35 @@ cmd open ${{
 }}
 
 cmd paste ${{
-    load=$(cat ~/.local/share/lf/files)
-    mode=$(echo "$load" | sed -n '1p')
-    list=$(echo "$load" | sed '1d')
-    if [ $mode = 'copy' ]; then
-        # cp -R $list .
-    elif [ $mode = 'move' ]; then
-        # mv $list .
-        # rm ~/.local/share/lf/files
-        # lf -remote 'send clear'
+    set -e
+    set -f
+
+    file=~/.local/share/lf/files
+
+    mode=$(sed -n '1p' "$file")
+
+    if [ "$mode" = 'copy' ]; then
+        sed '1d' "$file" | while IFS= read -r f; do
+            rsync -avh --partial --progress -- "$f" . || exit 1
+        done
+
+    elif [ "$mode" = 'move' ]; then
+        # Copy ALL
+        sed '1d' "$file" | while IFS= read -r f; do
+            rsync -avh --partial --progress -- "$f" . || exit 1
+        done
+
+        # Verify ALL
+        sed '1d' "$file" | while IFS= read -r f; do
+            rsync -avh --checksum --dry-run -- "$f" . || exit 1
+        done
+
+        # Delete ALL
+        sed '1d' "$file" | while IFS= read -r f; do
+            rm -rf -- "$f"
+        done
+
+        rm "$file"
+        lf -remote 'send clear'
     fi
 }}
