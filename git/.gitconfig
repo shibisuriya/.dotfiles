@@ -11,9 +11,8 @@
 # To prevent myself from committing and pushing sensitive information I am
 # adding this file to `.gitignore`.
 
-[user]
-	email =
-	name =
+[include]
+    path = ~/.gitconfig.local
 
 [core]
     excludesfile = ~/.gitignore_global
