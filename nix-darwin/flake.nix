@@ -29,18 +29,15 @@
       # List packages installed in system profile. To search by name, run:
       # $ nix-env -qaP | grep wget
       environment.systemPackages = [
-        pkgs.gimp-with-plugins
         pkgs.go
         # nix-darwin doesn't added Transmission GUI to mac's Launchpad, to
         # launch an instance of Transmission GUI use the command `transmission-qt`.
-        pkgs.transmission_4-qt
         pkgs.vlc-bin
         pkgs.parallel-full
         pkgs.httpie
         pkgs.maven
         pkgs.rustup
         pkgs.zsh-autosuggestions
-        pkgs.firefox-unwrapped
         pkgs.fzf
         pkgs.starship
         pkgs.libgccjit
@@ -62,11 +59,15 @@
         pkgs.pandoc
         pkgs.tree
         pkgs.flameshot
+        pkgs.rsync
       ];
 
       system.primaryUser = "shibi";
 
       system.defaults = {
+        trackpad = {
+          Clicking = true;
+        };
         NSGlobalDomain = {
           KeyRepeat = 2; # After running `darwin-rebuild`, signout & sign back in for this to take effect.
           InitialKeyRepeat = 15;
