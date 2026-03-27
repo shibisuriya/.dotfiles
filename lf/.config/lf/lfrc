@@ -53,7 +53,7 @@ cmd delete ${{
         trash "$f"
     else
         echo ""
-        echo "Deletion cancelled."
+        echo "Deletion cancelled"
     fi
 
     echo ""

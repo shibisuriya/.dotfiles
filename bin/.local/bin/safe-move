@@ -1,6 +1,6 @@
 #!/usr/bin/env zsh
 
-# safe-move SOURCE... -t DIRECTORY
+# safe-move SOURCE... -t TARGET
 
 set -e
 set -f
@@ -8,12 +8,11 @@ set -f
 files=()
 dest=""
 
-# parse args
 while [[ $# -gt 0 ]]; do
     case "$1" in
         -t)
             [[ -z "$2" || "$2" == -* ]] && {
-                echo "❌ -t requires a valid target directory"
+                echo "Option -t requires an argument"
                 exit 1
             }
             dest="$2"
@@ -26,40 +25,30 @@ while [[ $# -gt 0 ]]; do
     esac
 done
 
-# enforce contract
-[[ -z "$dest" ]] && { echo "❌ Missing -t TARGET"; exit 1; }
-[[ ${#files[@]} -eq 0 ]] && { echo "❌ No source files"; exit 1; }
-[[ ! -d "$dest" ]] && { echo "❌ Target is not a directory: $dest"; exit 1; }
+[[ ${#files[@]} -eq 0 ]] && { echo "Missing source"; exit 1; }
+[[ -z "$dest" ]] && { echo "Option -t is mandatory"; exit 1; }
+[[ ! -d "$dest" ]] && { echo "Target is not a directory: $dest"; exit 1; }
 
 
-# Pre-check ALL files first
 for f in "${files[@]}"; do
     name=$(basename "$f")
 
     if [[ -e "$dest/$name" ]]; then
-        echo "❌ File already exists in target: $name"
+        echo "File already exists in target: $name"
         exit 1
     fi
 done
 
-echo -e "\nMoving items:\n"
-
-# 1️⃣ Copy ALL
 for f in "${files[@]}"; do
     rsync -a --partial -- "$f" "$dest/" || exit 1
-    echo "$f"
 done
 
-# 2️⃣ Verify ALL
-echo -e "\nVerifying:\n"
 for f in "${files[@]}"; do
     rsync -a --checksum --dry-run -- "$f" "$dest/" || exit 1
-    echo "$f"
 done
 
+echo -e "Moved files:"
 
-# 3️⃣ Delete ALL (only if everything succeeded)
-echo -e "\nDeleting:\n"
 for f in "${files[@]}"; do
     rm -rf -- "$f"
     echo "$f"
