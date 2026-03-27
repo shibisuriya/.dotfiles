@@ -62,11 +62,6 @@ clear() {
     fi
 }
 
-# utils
-alias fs=". ~/scripts/fuzzy_folder_search.zsh"
-alias lazy-jenkins='node ./src/index.js'
-alias node-scrub="~/scripts/node_scrub.zsh"
-alias diff-checker="~/scripts/diff-checker.zsh"
 
 # In normal mode, press <ctrl> + e to edit the command written so far edit in neovim.
 export VISUAL=nvim
@@ -115,3 +110,22 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 # For fnm (replacement for nvm - Node Version Manager)
 eval "$(fnm env --use-on-cd --shell zsh)"
 
+alias fs=fuzzy_folder_search
+
+fuzzy_folder_search() {
+    target_dir=$(fd --type dir \
+            --hidden \
+            --max-depth 5 \
+            --base-directory ~ \
+            --search-path Desktop \
+            --search-path Downloads \
+            --exclude .git \
+            --exclude node_modules \
+        --exclude .github | fzf)
+
+    if [ -n "$target_dir" ]; then
+        echo "From: $(pwd | sed "s|^$HOME|~|")"
+        echo "  To: ~/${target_dir}"
+        cd ~/"$target_dir"
+    fi
+}
