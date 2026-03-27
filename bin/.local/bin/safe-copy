@@ -1,0 +1,14 @@
+#!/usr/bin/env zsh
+
+set -e
+set -f
+
+dest="."
+
+echo -e "\Copy items:\n"
+
+
+while IFS= read -r f; do
+    rsync -a --partial -- "$f" "$dest/" || exit 1
+    echo "$f"
+done

@@ -35,11 +35,7 @@ source <(fzf --zsh)
 
 export PATH=$PATH:/usr/local/go/bin # lf file manager needs golang.
 export PATH=$PATH:~/go/bin # globally installed go packages are stored here.
-
-
-### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
-export PATH="/Users/shibisuriya/.rd/bin:$PATH"
-### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
+export PATH="$HOME/.local/bin:$PATH"
 
 eval "$(starship init zsh)"
 

@@ -1,0 +1,28 @@
+#!/usr/bin/env zsh
+
+set -e
+set -f
+
+dest="."
+
+echo -e "\nMoving items:\n"
+
+# 1️⃣ Copy ALL
+while IFS= read -r f; do
+    rsync -a --partial -- "$f" "$dest/" || exit 1
+    echo "$f"
+done
+
+# 2️⃣ Verify ALL
+echo -e "\nVerifying:\n"
+while IFS= read -r f; do
+    rsync -a --checksum --dry-run -- "$f" "$dest/" || exit 1
+    echo "$f"
+done
+
+# 3️⃣ Delete ALL
+echo -e "\nDeleting:\n"
+while IFS= read -r f; do
+    rm -rf -- "$f"
+    echo "$f"
+done
