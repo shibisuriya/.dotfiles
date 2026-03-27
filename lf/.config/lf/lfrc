@@ -58,6 +58,10 @@ cmd delete ${{
 
     echo ""
     read -k 1 "?Press any key to continue..."
+
+    if [[ "$REPLY" != $'\n' ]]; then
+	echo ""
+    fi
 }}
 
 map d delete
@@ -152,6 +156,10 @@ cmd paste ${{
 
     echo ""
     read -k 1 "?Press any key to continue..."
+
+    if [[ "$REPLY" != $'\n' ]]; then
+	echo ""
+    fi
 
     return 0
 }}
