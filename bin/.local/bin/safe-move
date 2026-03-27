@@ -1,28 +1,66 @@
 #!/usr/bin/env zsh
 
+# safe-move SOURCE... -t DIRECTORY
+
 set -e
 set -f
 
-dest="."
+files=()
+dest=""
+
+# parse args
+while [[ $# -gt 0 ]]; do
+    case "$1" in
+        -t)
+            [[ -z "$2" || "$2" == -* ]] && {
+                echo "❌ -t requires a valid target directory"
+                exit 1
+            }
+            dest="$2"
+            shift 2
+            ;;
+        *)
+            files+=("$1")
+            shift
+            ;;
+    esac
+done
+
+# enforce contract
+[[ -z "$dest" ]] && { echo "❌ Missing -t TARGET"; exit 1; }
+[[ ${#files[@]} -eq 0 ]] && { echo "❌ No source files"; exit 1; }
+[[ ! -d "$dest" ]] && { echo "❌ Target is not a directory: $dest"; exit 1; }
+
+
+# Pre-check ALL files first
+for f in "${files[@]}"; do
+    name=$(basename "$f")
+
+    if [[ -e "$dest/$name" ]]; then
+        echo "❌ File already exists in target: $name"
+        exit 1
+    fi
+done
 
 echo -e "\nMoving items:\n"
 
 # 1️⃣ Copy ALL
-while IFS= read -r f; do
+for f in "${files[@]}"; do
     rsync -a --partial -- "$f" "$dest/" || exit 1
     echo "$f"
 done
 
 # 2️⃣ Verify ALL
 echo -e "\nVerifying:\n"
-while IFS= read -r f; do
+for f in "${files[@]}"; do
     rsync -a --checksum --dry-run -- "$f" "$dest/" || exit 1
     echo "$f"
 done
 
-# 3️⃣ Delete ALL
+
+# 3️⃣ Delete ALL (only if everything succeeded)
 echo -e "\nDeleting:\n"
-while IFS= read -r f; do
+for f in "${files[@]}"; do
     rm -rf -- "$f"
     echo "$f"
 done

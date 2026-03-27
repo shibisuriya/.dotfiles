@@ -31,6 +31,9 @@ cmd new-file ${{
 	fi
 
 	echo "File(s) and folder(s) created successfully."
+
+    echo ""
+    read -k 1 "?Press any key to continue..."
 }}
 
 
@@ -48,6 +51,9 @@ cmd delete ${{
     else
         echo "\nDeletion cancelled."
     fi
+
+    echo ""
+    read -k 1 "?Press any key to continue..."
 }}
 
 map d delete
@@ -109,35 +115,39 @@ cmd open ${{
 }}
 
 cmd paste ${{
-    set -e
     set -f
 
-    file=~/.local/share/lf/files
+    files=~/.local/share/lf/files
 
-    mode=$(sed -n '1p' "$file")
+    if [[ ! -f "$files" ]] || [[ $(wc -l < "$files") -le 1 ]]; then
+        echo ""
+        echo "Nothing to paste.\n"
+        read -k 1 "?Press any key to continue..."
+        return 0
+    fi
+
+    mode=$(sed -n '1p' "$files")
+
+    sources=()
+    while IFS= read -r f; do
+        sources+=("$f")
+    done < <(sed '1d' "$files")
+
+    exit_code=0
 
     if [ "$mode" = 'copy' ]; then
-        sed '1d' "$file" | while IFS= read -r f; do
-            rsync -avh --partial --progress -- "$f" . || exit 1
-        done
+        safe-copy "${sources[@]}" -t . || exit_code=$?
 
     elif [ "$mode" = 'move' ]; then
-        # Copy ALL
-        sed '1d' "$file" | while IFS= read -r f; do
-            rsync -avh --partial --progress -- "$f" . || exit 1
-        done
-
-        # Verify ALL
-        sed '1d' "$file" | while IFS= read -r f; do
-            rsync -avh --checksum --dry-run -- "$f" . || exit 1
-        done
-
-        # Delete ALL
-        sed '1d' "$file" | while IFS= read -r f; do
-            rm -rf -- "$f"
-        done
-
-        rm "$file"
-        lf -remote 'send clear'
+        safe-move "${sources[@]}" -t . || exit_code=$?
+        [ $exit_code -eq 0 ] && {
+            rm "$files"
+            lf -remote 'send clear'
+        }
     fi
+
+    echo ""
+    read -k 1 "?Press any key to continue..."
+
+    return 0
 }}
