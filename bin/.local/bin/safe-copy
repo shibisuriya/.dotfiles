@@ -1,6 +1,6 @@
 #!/usr/bin/env zsh
 
-# safe-copy SOURCE... -t DIRECTORY
+# safe-copy SOURCE... -t TARGET
 
 set -e
 set -f
@@ -11,7 +11,7 @@ dest=""
 while [[ $# -gt 0 ]]; do
     case "$1" in
         -t)
-            [[ -z "$2" ]] && { echo "❌ -t requires a target"; exit 1; }
+            [[ -z "$2" ]] && { echo "-t option requires an argument"; exit 1; }
             dest="$2"
             shift 2
             ;;
@@ -22,24 +22,21 @@ while [[ $# -gt 0 ]]; do
     esac
 done
 
-# enforce contract
-[[ -z "$dest" ]] && { echo "❌ Missing -t TARGET"; exit 1; }
-[[ ${#files[@]} -eq 0 ]] && { echo "❌ No source files"; exit 1; }
+[[ ${#files[@]} -eq 0 ]] && { echo "Missing source"; exit 1; }
+[[ -z "$dest" ]] && { echo "Option -t is mandatory"; exit 1; }
 
-# ensure destination exists
-[[ ! -d "$dest" ]] && { echo "❌ Target is not a directory: $dest"; exit 1; }
+[[ ! -d "$dest" ]] && { echo "Target is not a directory: $dest"; exit 1; }
 
-# Pre-check ALL files first
 for f in "${files[@]}"; do
     name=$(basename "$f")
 
     if [[ -e "$dest/$name" ]]; then
-        echo "❌ File already exists in target: $name"
+        echo "File already exists in target: $name"
         exit 1
     fi
 done
 
-echo -e "Copying items:\n"
+echo -e "Copied files:"
 
 for f in "${files[@]}"; do
     rsync -a --partial -- "$f" "$dest/" || exit 1
