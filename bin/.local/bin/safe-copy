@@ -39,7 +39,7 @@ for f in "${files[@]}"; do
     fi
 done
 
-echo -e "\nCopying items:\n"
+echo -e "Copying items:\n"
 
 for f in "${files[@]}"; do
     rsync -a --partial -- "$f" "$dest/" || exit 1

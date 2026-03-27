@@ -40,16 +40,20 @@ cmd new-file ${{
 map a new-file
 
 cmd delete ${{
-    echo "\n"
+    trap 'echo ""; exit 0' INT TERM
+
+    echo ""
     printf "Delete \033[1;31m%s\033[0m?\n" "$f"
 
-    printf "\nType 'Yes' to confirm: "
+    echo ""
+    printf "Type 'Yes' to confirm: "
     read answer
 
     if [ "$answer" = "Yes" ]; then
         trash "$f"
     else
-        echo "\nDeletion cancelled."
+        echo ""
+        echo "Deletion cancelled."
     fi
 
     echo ""
@@ -120,11 +124,10 @@ cmd paste ${{
     files=~/.local/share/lf/files
 
     if [[ ! -f "$files" ]] || [[ $(wc -l < "$files") -le 1 ]]; then
-        echo ""
-        echo "Nothing to paste.\n"
-        read -k 1 "?Press any key to continue..."
         return 0
     fi
+
+    trap 'echo ""; exit 0' INT TERM
 
     mode=$(sed -n '1p' "$files")
 
@@ -135,6 +138,7 @@ cmd paste ${{
 
     exit_code=0
 
+    echo ""
     if [ "$mode" = 'copy' ]; then
         safe-copy "${sources[@]}" -t . || exit_code=$?
 
