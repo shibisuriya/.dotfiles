@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"os"
+	"os/exec"
 	"path/filepath"
 	"strings"
 
@@ -31,6 +32,7 @@ func main() {
 				os.Exit(1)
 			}
 
+			files := []string{}
 			for _, f := range args {
 				fileAbs, err := filepath.Abs(f)
 				if err != nil {
@@ -43,22 +45,63 @@ func main() {
 					os.Exit(1)
 				}
 
-				srcAbs := filepath.Dir(fileAbs)
-				if destAbs == srcAbs {
+				if destAbs == filepath.Dir(fileAbs) {
 					fmt.Println("File already in destination:", f)
 					os.Exit(1)
 				}
 
-				if strings.HasPrefix(destAbs, fileAbs+string(os.PathSeparator)) {
+				if fileInfo.IsDir() && strings.HasPrefix(destAbs, fileAbs) {
 					fmt.Println("Can't move a directory into itself:", f)
 					os.Exit(1)
 				}
 
-				_ = fileInfo
+				files = append(files, fileAbs)
 			}
 
-			fmt.Println("Files:", args)
-			fmt.Println("Destination:", destAbs)
+			for _, f := range files {
+				cmd := exec.Command(
+					"rsync",
+					"-a",
+					"--partial",
+					"--",
+					f,
+					destAbs,
+				)
+				cmd.Stdout = os.Stdout
+				cmd.Stderr = os.Stderr
+
+				if err := cmd.Run(); err != nil {
+					fmt.Println("Copy failed:", f)
+					os.Exit(1)
+				}
+			}
+
+			for _, f := range files {
+				cmd := exec.Command(
+					"rsync",
+					"-a",
+					"--checksum",
+					"--dry-run",
+					"--",
+					f,
+					destAbs,
+				)
+				cmd.Stdout = os.Stdout
+				cmd.Stderr = os.Stderr
+
+				if err := cmd.Run(); err != nil {
+					fmt.Println("Verification failed:", f)
+					os.Exit(1)
+				}
+			}
+
+			for _, f := range files {
+				if err := os.RemoveAll(f); err != nil {
+					fmt.Println("Delete failed:", f)
+					os.Exit(1)
+				}
+				fmt.Println("Moved:", f)
+			}
 		},
 	}
 

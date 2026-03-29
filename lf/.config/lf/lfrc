@@ -147,7 +147,7 @@ cmd paste ${{
         safe-copy "${sources[@]}" -t . || exit_code=$?
 
     elif [ "$mode" = 'move' ]; then
-        safe-move "${sources[@]}" -t . || exit_code=$?
+        safe-move "${sources[@]}" -d . || exit_code=$?
         [ $exit_code -eq 0 ] && {
             rm "$files"
             lf -remote 'send clear'
