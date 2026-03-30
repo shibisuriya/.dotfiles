@@ -32,6 +32,7 @@ func main() {
 				os.Exit(1)
 			}
 
+			seen := make(map[string]bool)
 			files := []string{}
 			for _, f := range args {
 				fileAbs, err := filepath.Abs(f)
@@ -39,6 +40,13 @@ func main() {
 					fmt.Println("Failed to resolve file:", f)
 					os.Exit(1)
 				}
+
+				if seen[fileAbs] {
+					fmt.Println("Duplicate file:", f)
+					os.Exit(1)
+				}
+				seen[fileAbs] = true
+
 				fileInfo, err := os.Stat(fileAbs)
 				if err != nil {
 					fmt.Println("File does not exist:", f)
@@ -90,17 +98,20 @@ func main() {
 				cmd.Stderr = os.Stderr
 
 				if err := cmd.Run(); err != nil {
-					fmt.Println("Verification failed:", f)
+					fmt.Println("Verify failed:", f)
 					os.Exit(1)
 				}
 			}
 
-			for _, f := range files {
+			for i, f := range files {
 				if err := os.RemoveAll(f); err != nil {
 					fmt.Println("Delete failed:", f)
 					os.Exit(1)
 				}
-				fmt.Println("Moved:", f)
+				if i == 0 {
+					fmt.Println("Moved:")
+				}
+				fmt.Println(f)
 			}
 		},
 	}
