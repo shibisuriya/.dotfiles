@@ -69,6 +69,7 @@
             pkgs.vlc
             pkgs.trash-cli
             pkgs.rsync
+            pkgs.bruno
             # pkgs.docker-compose
             # pkgs.qemu
             # pkgs.zsh
