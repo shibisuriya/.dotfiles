@@ -23,11 +23,8 @@ else
         PATH="${PATH:+${PATH}:}/${HOME_DIR}/.fzf/bin"
     fi
 
-    # source ~/.nix-profile/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-    # source ~/.nix-profile/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
-    source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
     source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+    source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 fi
 
 source <(fzf --zsh)
@@ -97,6 +94,8 @@ yt-snip() {
     docker-compose -f ~/scripts/yt-snip/docker-compose.yml run --rm yt-snip "$@"
 }
 
+export LANG=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
 
 export PATH="$PATH:/usr/local/texlive/2018/bin/x86_64-darwin"
 
