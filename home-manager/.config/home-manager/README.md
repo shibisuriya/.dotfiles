@@ -28,8 +28,10 @@ home-manager switch
 ## Change your default shell from bash to zsh,
 
 ```bash
+git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.zsh/zsh-syntax-highlighting
 sudo apt update
-sudo apt install zsh zsh-autosuggestions zsh-syntax-highlighting -y
+sudo apt install zsh -y
 chsh -s "$(command -v zsh)"
 ```
 
