@@ -7,6 +7,11 @@ if [[ "$(uname)" == "Darwin" ]]; then
     is_mac=true
 fi
 
+export HISTFILE=~/.zsh_history
+export HISTSIZE=100000
+export SAVEHIST=100000
+setopt INC_APPEND_HISTORY
+
 if $is_mac; then
     export PATH="/opt/homebrew/bin:$PATH" # for homebrew.
     export PATH="/Applications/IntelliJ IDEA CE.app/Contents/MacOS:$PATH" # for Intellij idea
