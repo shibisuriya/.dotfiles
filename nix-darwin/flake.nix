@@ -60,6 +60,9 @@
         pkgs.tree
         pkgs.flameshot
         pkgs.rsync
+
+      fonts.packages = [
+        pkgs.nerd-fonts.jetbrains-mono
       ];
 
       system.primaryUser = "shibi";
