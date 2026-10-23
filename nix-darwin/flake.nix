@@ -60,6 +60,9 @@
         pkgs.tree
         pkgs.flameshot
         pkgs.rsync
+        pkgs.bruno
+        pkgs.gimp2
+      ];
 
       fonts.packages = [
         pkgs.nerd-fonts.jetbrains-mono
