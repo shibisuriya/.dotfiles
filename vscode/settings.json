@@ -66,6 +66,9 @@
   "[markdown]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
+  "[scss]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
   "blockman.n01LineHeight": 0,
   "workbench.colorCustomizations": {
     "editor.lineHighlightBackground": "#1073cf2d",
