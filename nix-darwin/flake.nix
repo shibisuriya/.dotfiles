@@ -53,7 +53,6 @@
         pkgs.ripgrep
         pkgs.lf
         pkgs.git
-        pkgs.kitty
         pkgs.aerospace
         pkgs.pandoc
         pkgs.tree
@@ -61,6 +60,7 @@
         pkgs.rsync
         pkgs.bruno
         pkgs.gimp2
+        pkgs.ghostty-bin
       ];
 
       fonts.packages = [
