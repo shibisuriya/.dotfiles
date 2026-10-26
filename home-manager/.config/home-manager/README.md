@@ -11,8 +11,8 @@
 
 Make sure to create a swap parition while installing Ubuntu,
 the size of the swap partition must be atleast 1.2 times the
-size of the memory.
-Run this command after cloning your dotfiles repo.
+size of the memory. Run this command after cloning your
+dotfiles repo.
 
 ```bash
 export NIX_CONFIG="experimental-features = nix-command flakes"; nix run github:nix-community/home-manager -- switch --flake ~/.dotfiles/home-manager/.config/home-manager/
@@ -66,6 +66,12 @@ sudo apt install i3
 
 ```bash
 sudo apt install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin -y
+```
+
+## Download & install rust toolchain
+
+```bash
+rustup default stable
 ```
 
 TODO: Transfer the content of this readme to your blog post.
